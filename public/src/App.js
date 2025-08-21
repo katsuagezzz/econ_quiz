@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { ChevronRight, Trophy, Users, Book, CheckCircle, XCircle, RotateCcw } from 'lucide-react';
+import React, { useState } from 'react';
 
 const BusinessQuizApp = () => {
   // ユーザー管理
@@ -508,7 +507,7 @@ const BusinessQuizApp = () => {
     return (
       <div className="max-w-md mx-auto mt-20 p-6 bg-white rounded-lg shadow-lg">
         <div className="text-center mb-6">
-          <Book className="mx-auto mb-4 text-blue-600" size={48} />
+          <div className="text-6xl mb-4">📚</div>
           <h1 className="text-2xl font-bold text-gray-800 mb-2">ビジネス知識基礎クイズ</h1>
           <p className="text-gray-600">会計・法務・税務の基礎を学習しよう</p>
         </div>
@@ -564,7 +563,7 @@ const BusinessQuizApp = () => {
                   onClick={() => startQuiz(index)}
                   className="w-full py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-200 flex items-center justify-center"
                 >
-                  開始 <ChevronRight className="ml-2" size={16} />
+                  開始 →
                 </button>
               </div>
             </div>
@@ -576,8 +575,7 @@ const BusinessQuizApp = () => {
             onClick={() => setScreen('leaderboard')}
             className="px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition duration-200 flex items-center mx-auto"
           >
-            <Trophy className="mr-2" size={16} />
-            リーダーボード
+            🏆 リーダーボード
           </button>
         </div>
       </div>
@@ -600,7 +598,7 @@ const BusinessQuizApp = () => {
           <div className="mb-6">
             <div className="w-full bg-gray-200 rounded-full h-2 mb-4">
               <div 
-                className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+                className="bg-blue-600 h-2 rounded-full transition duration-300"
                 style={{ width: `${((currentQuestion + 1) / quizSets[currentSet].questions.length) * 100}%` }}
               ></div>
             </div>
@@ -634,10 +632,10 @@ const BusinessQuizApp = () => {
                       <span className="font-medium mr-3">{String.fromCharCode(65 + index)}.</span>
                       <span>{option}</span>
                       {selectedAnswer !== null && index === currentQ.correct && (
-                        <CheckCircle className="ml-auto text-green-600" size={20} />
+                        <span className="ml-auto text-green-600">✅</span>
                       )}
                       {selectedAnswer !== null && index === selectedAnswer && index !== currentQ.correct && (
-                        <XCircle className="ml-auto text-red-600" size={20} />
+                        <span className="ml-auto text-red-600">❌</span>
                       )}
                     </div>
                   </button>
@@ -679,7 +677,7 @@ const BusinessQuizApp = () => {
       <div className="max-w-2xl mx-auto mt-10 p-6">
         <div className="bg-white rounded-lg shadow-lg p-8 text-center">
           <div className="mb-6">
-            <Trophy className="mx-auto mb-4 text-yellow-500" size={64} />
+            <div className="text-6xl mb-4">🏆</div>
             <h2 className="text-2xl font-bold text-gray-800 mb-2">クイズ完了！</h2>
             <p className="text-gray-600">{quizSets[currentSet].title}</p>
           </div>
@@ -717,16 +715,14 @@ const BusinessQuizApp = () => {
               onClick={() => startQuiz(currentSet)}
               className="w-full py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition duration-200 flex items-center justify-center"
             >
-              <RotateCcw className="mr-2" size={16} />
-              このセットをもう一度
+              🔄 このセットをもう一度
             </button>
             
             <button
               onClick={() => setScreen('leaderboard')}
               className="w-full py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition duration-200 flex items-center justify-center"
             >
-              <Trophy className="mr-2" size={16} />
-              リーダーボード
+              🏆 リーダーボード
             </button>
           </div>
         </div>
@@ -739,7 +735,7 @@ const BusinessQuizApp = () => {
       <div className="max-w-4xl mx-auto mt-10 p-6">
         <div className="bg-white rounded-lg shadow-lg p-8">
           <div className="text-center mb-8">
-            <Users className="mx-auto mb-4 text-purple-600" size={48} />
+            <div className="text-6xl mb-4">👥</div>
             <h2 className="text-2xl font-bold text-gray-800 mb-2">リーダーボード</h2>
             <p className="text-gray-600">全参加者の成績一覧</p>
           </div>
@@ -767,9 +763,9 @@ const BusinessQuizApp = () => {
                     <tr key={index} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
                       <td className="px-4 py-3">
                         <div className="flex items-center">
-                          {index === 0 && <Trophy className="mr-2 text-yellow-500" size={16} />}
-                          {index === 1 && <Trophy className="mr-2 text-gray-400" size={16} />}
-                          {index === 2 && <Trophy className="mr-2 text-orange-600" size={16} />}
+                          {index === 0 && <span className="mr-2">🥇</span>}
+                          {index === 1 && <span className="mr-2">🥈</span>}
+                          {index === 2 && <span className="mr-2">🥉</span>}
                           <span className="font-medium">{index + 1}</span>
                         </div>
                       </td>
